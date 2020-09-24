@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <article-list v-bind:articleInfo="articleInfo" />
+    <article-list v-if="articleInfo.length > 0" v-bind:articleInfo="articleInfo" />
+    <div v-else class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
     <split :total="articleTotal" :pageSize="pageSize" />
   </div>
 </template>
@@ -17,6 +20,8 @@ export default {
       articleInfo: [],
       articleTotal: 0,
       pageSize: 10,
+      fullscreenLoading: true,
+      tagID: 0,
     };
   },
   components: {
@@ -25,21 +30,30 @@ export default {
   },
   watch: {
     $route() {
-      this.updateList(this);
+      this.updateList();
     },
   },
   mounted() {
-    this.updateList(this);
+    this.updateList();
     // 每秒检查一次缓存是否过期
     this.timer = setInterval(this.clearCacheTimer, 1000);
   },
   methods: {
-    updateList: (self) => {
+    updateList() {
+      let self = this;
+      self.articleInfo = [];
+      self.fullscreenLoading = true;
       let intPage = parseInt(self.$route.params.page);
+      self.tagID = parseInt(self.$route.params.tag);
       let cacheKey = "articleList:" + intPage;
-      let MaxCacheQueueLen = 5; // 最大缓存页数
+      // 最大缓存页数
+      let MaxCacheQueueLen = 5;
       let cacheQueue = [];
-      if (storage.has(cacheKey) && storage.has("articleTotal")) {
+      if (
+        storage.has(cacheKey) &&
+        storage.has("articleTotal") &&
+        self.tagID == 0
+      ) {
         self.articleInfo = storage.get(cacheKey);
         self.articleTotal = storage.get("articleTotal");
         console.log(
@@ -47,6 +61,7 @@ export default {
             "If you want to pull the latest data from the server again, please clean up the Local Cache."
         );
       } else {
+        console.log(self.tagID);
         self
           .axios({
             method: "post",
@@ -54,9 +69,15 @@ export default {
             data: {
               page: parseInt(self.$route.params.page),
               pageSize: self.pageSize,
+              tag: self.tagID,
             },
           })
           .then(function (response) {
+            if (self.tagID != 0) {
+              self.articleTotal = response.data["total"];
+              self.articleInfo = response.data["articleList"];
+              return;
+            }
             // LRLU
             if (storage.has("cacheQueue")) {
               cacheQueue = storage.get("cacheQueue");
@@ -80,15 +101,16 @@ export default {
             self.articleInfo = response.data["articleList"];
           });
       }
+      self.fullscreenLoading = false;
     },
 
     // 定时清理 localcache
     clearCacheTimer: () => {
-      // 5 分钟没动作就清空缓存
-      let timeout = 1000 * 60 * 5
-      if(new Date().getTime() - storage.get("timer") - timeout >= 0){
-            storage.clear();
-        }
+      // 2 分钟没动作就清空缓存
+      let timeout = 1000 * 60 * 2;
+      if (new Date().getTime() - storage.get("timer") - timeout >= 0) {
+        storage.clear();
+      }
     },
   },
 };

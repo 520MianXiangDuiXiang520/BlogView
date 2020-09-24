@@ -13,10 +13,14 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/index/1'
+            redirect: '/index/1/0'
         },
         {
-            path: "/index/:page",
+            path: '/index/:page',
+            redirect: '/index/:page/0'
+        },
+        {
+            path: "/index/:page/:tag",
             name: "list",
             component: List
         },

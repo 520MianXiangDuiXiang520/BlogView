@@ -11,7 +11,6 @@ import mavonEditor from 'mavon-editor'
 import './plugins/element.js'
 Vue.config.productionTip = false
 
-
 Vue.use(vueAxios, axios, ElementUI)
 Vue.use(mavonEditor)
 new Vue({
