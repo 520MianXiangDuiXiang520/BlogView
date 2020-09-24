@@ -59,6 +59,7 @@ export default {
   provide() {
     return {
       reload: this.reload,
+      getExactTime: this.getExactTime,
     };
   },
   data: () => {
@@ -114,6 +115,20 @@ export default {
     this.getUserInfo();
   },
   methods: {
+        getExactTime(time) {
+      // var date = new Date(time);
+      var date = new Date(time * 1000);
+      var year = date.getFullYear() + "-";
+      var month =
+        (date.getMonth() + 1 < 10
+          ? "0" + (date.getMonth() + 1)
+          : date.getMonth() + 1) + "-";
+      var dates = date.getDate() + " ";
+      var hour = date.getHours() + ":";
+      var min = date.getMinutes() + ":";
+      var second = date.getSeconds();
+      return year + month + dates + hour + min + second;
+    },
     openRight(title, msg, type) {
       this.$notify({
         title: title,
@@ -200,29 +215,12 @@ export default {
 .my-top {
   margin-left: 200px;
 }
-.el-row {
-  margin-bottom: 20px;
-}
-.el-col {
-  border-radius: 4px;
-}
-.bg-purple-dark {
-  background: #99a9bf;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
-}
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
-.row-bg {
-  padding: 10px 0;
-  background-color: #f9fafc;
-}
+
 .nav {
   float: left;
 }
