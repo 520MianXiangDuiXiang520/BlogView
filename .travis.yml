@@ -19,7 +19,7 @@ before_install:
 script:
 - npm run build
 after_success:
-- ssh -i ~/.ssh/id_rsa root@39.106.168.39 "ls"
+- ssh -i ~/.ssh/id_rsa root@39.106.168.39 "$path/run.sh $path"
 env:
   global:
     secure: NpZyTdfEUawqHfZcEMkBTH8hmzNWifB3XSRIIMaYVgU1qUqDRh8LoFawOaZXTtx6QxlJ8Hsw+KlrYPwn8HPHCeA7bHSJ3q8+4qEiCzM1qGzRomqNkRuiC/MGoMiV8+pm6h85K6xytNoBg0qtSRC3Exlx9hVN8+ZLnepXmz81m8OrIvxVETUSEFygPfb+l87HxrRCEyFD2AhCrwLJiQTfPyiGvWH642xPx001o4wTOsHINyzLkCaBsKD1LmkXepjuLdhYbOxmPRrcZV+lyjrmDZiFJNwSGs/6NwtwQ0xbfskm6mUiReqMnR0Bz6JW1ZSLuaQzHoTNk7br6/Uz8NsokAZBaqj+4MgAcKchFkfx2SQVTY/H5eyccX4bYjqStGRH5i4wQE5IQYTOiWJRhVvWEHO+MvLeFNcXjv7xcPqJh6jt6Nctqi1JRqptr05i6vfdlx94Tcm2IIe1tGHBw5xKW3TUYSxyACIdPQe8sYBblVXIhV93CcDKNBp/FQAmY/4IBFkA2D9CoHBTxLVzRS3TtFojPrR1ElNuYLLtLU4rwvrP7P2FewaMth4RwHZ4Hpxsqk3KbXb8i8rXKFzBHxbq7jiZoG6XJ3/03YuHTFqrr1BF3Ot+QATLh+mueM+TIy04hN4NVJi4SbuPNB0fvEPkTss01L3u6Na/6NaIxHzYF4w=
