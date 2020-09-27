@@ -13,7 +13,7 @@ module.exports = {
     crossorigin: undefined,
     integrity: false,
     // devServer: {//代理
-    //     port: 8080,
-    //     proxy: 'http://192.168.1.3:8080'
+    //     port: 8889,
+    //     // proxy: 'http://192.168.1.3:8080'
     // }
 }
