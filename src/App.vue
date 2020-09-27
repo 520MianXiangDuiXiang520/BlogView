@@ -33,7 +33,7 @@ export default {
         },
       ],
       isRouterAlive: true,
-      serverIP: "http://39.106.168.39:8080/"
+      serverIP: "http://39.106.168.39:8888/"
     };
   },
   provide() {
