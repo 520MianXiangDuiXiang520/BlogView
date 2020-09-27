@@ -32,14 +32,16 @@ export default {
           href: "/tag",
         },
       ],
-      isRouterAlive: true
+      isRouterAlive: true,
+      serverIP: "http://39.106.168.39:8080/"
     };
   },
   provide() {
     return {
       openMessage: this.openMessage,
       getExactTime: this.getExactTime,
-      reload: this.reload
+      reload: this.reload,
+      serverIP: this.serverIP
     };
   },
   methods: {

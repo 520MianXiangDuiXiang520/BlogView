@@ -37,12 +37,13 @@ export default {
       return data;
     },
   },
+  inject: ["serverIP"],
   mounted() {
     let self = this;
     console.log(self);
     this.axios({
       method: "post",
-      url: "http://localhost:8080/api/article/detail",
+      url: self.serverIP + "api/article/detail",
       data: {
         articleId: parseInt(self.$route.params.id),
       },

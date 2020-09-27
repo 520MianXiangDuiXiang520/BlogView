@@ -38,6 +38,7 @@ export default {
     // 每秒检查一次缓存是否过期
     this.timer = setInterval(this.clearCacheTimer, 1000);
   },
+  inject: ["serverIP"],
   methods: {
     updateList() {
       let self = this;
@@ -65,7 +66,7 @@ export default {
         self
           .axios({
             method: "post",
-            url: "http://localhost:8080/api/article/list",
+            url: self.serverIP + "api/article/list",
             data: {
               page: parseInt(self.$route.params.page),
               pageSize: self.pageSize,

@@ -47,6 +47,7 @@ export default {
       size: "medium",
     };
   },
+  inject: ["serverIP"],
   mounted() {
     this.getFriendList(this);
   },
@@ -55,7 +56,7 @@ export default {
       self
         .axios({
           method: "post",
-          url: "http://localhost:8080/api/friendship/list",
+          url: self.serverIP + "api/friendship/list",
           data: {},
         })
         .then(function (response) {
