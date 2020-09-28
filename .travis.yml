@@ -16,8 +16,6 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 - ssh-add ~/.ssh/id_rsa
 
-script:
-- npm run build
 after_success:
 - ssh -i ~/.ssh/id_rsa root@39.106.168.39 "$path/run.sh $path"
 env:
