@@ -6,8 +6,6 @@ branches:
 addons:
   ssh_known_hosts:
   - 39.106.168.39
-install:
-- npm install
 
 before_install:
 - echo $super_secret_password
