@@ -30,7 +30,7 @@
 <script>
 export default {
   name: "Tag",
-  inject: ["openMessage", "getExactTime", "reload"],
+  inject: ["openMessage", "getExactTime", "reload", "serverIP"],
   data() {
     return {
       tags: [],
@@ -47,7 +47,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/tag/list",
+        url: self.serverIP + "api/tag/list",
         data: {},
       })
         .then(function (response) {

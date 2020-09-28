@@ -19,6 +19,7 @@ export default {
       pageSize: 5,
     };
   },
+  inject: ["serverIP"],
   components: {
     ArticleList,
     Split,
@@ -50,7 +51,7 @@ export default {
         self
           .axios({
             method: "post",
-            url: "http://localhost:8080/api/article/list",
+            url: self.serverIP + "api/article/list",
             data: {
               page: parseInt(self.$route.params.page),
               pageSize: self.pageSize,

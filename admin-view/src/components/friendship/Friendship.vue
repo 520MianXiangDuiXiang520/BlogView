@@ -86,7 +86,7 @@ export default {
       },
     };
   },
-  inject: ["reload"],
+  inject: ["reload", "serverIP"],
   methods: {
     addNewFriend() {
       let self = this;
@@ -96,7 +96,7 @@ export default {
       } else {
         this.axios({
           method: "post",
-          url: "http://localhost:8080/api/friendship/application",
+          url: self.serverIP + "api/friendship/application",
           data: {
             siteName: self.newFriend.siteName,
             siteLink: self.newFriend.siteLink,
@@ -138,7 +138,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/friendship/approval",
+        url: self.serverIP + "api/friendship/approval",
         data: {
           id: id,
           result: 2,
@@ -168,7 +168,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/friendship/approval",
+        url: self.serverIP + "api/friendship/approval",
         data: {
           id: id,
           result: 3,
@@ -198,7 +198,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/friendship/list",
+        url: self.serverIP + "api/friendship/list",
         data: {},
       })
         .then(function (response) {
@@ -225,7 +225,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/friendship/unshow",
+        url: self.serverIP + "api/friendship/unshow",
         data: {},
       })
         .then(function (response) {
@@ -254,7 +254,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/friendship/delete",
+        url: self.serverIP + "api/friendship/delete",
         data: {
           id: id,
         },

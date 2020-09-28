@@ -115,7 +115,7 @@
 <script>
 export default {
   name: "NewArticle",
-  inject: ["reload"],
+  inject: ["reload", "serverIP"],
   data: () => {
     return {
       markdownOption: {
@@ -146,7 +146,7 @@ export default {
       let self = this
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/tag/add",
+        url: self.serverIP + "api/tag/add",
         data: {
           name: self.newTag
         },
@@ -198,7 +198,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/article/add",
+        url: self.serverIP + "api/article/add",
         data: {
           title: this.title,
           text: this.handbook,
@@ -237,7 +237,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/tag/list",
+        url: self.serverIP + "api/tag/list",
         data: {},
       })
         .then(function (response) {

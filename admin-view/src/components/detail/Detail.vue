@@ -117,7 +117,7 @@
 <script>
 export default {
   name: "Detail",
-  inject: ["reload"],
+  inject: ["reload", "serverIP"],
   data: () => {
     return {
       markdownOption: {
@@ -148,7 +148,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/tag/add",
+        url: self.serverIP + "api/tag/add",
         data: {
           name: self.newTag,
         },
@@ -203,7 +203,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/article/detail",
+        url: self.serverIP + "api/article/detail",
         data: {
           articleId: parseInt(self.$route.params.id),
         },
@@ -224,7 +224,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/article/tags",
+        url: self.serverIP + "api/article/tags",
         data: {
           articleID: parseInt(self.$route.params.id),
         },
@@ -247,7 +247,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/article/update",
+        url: self.serverIP + "api/article/update",
         data: {
           title: this.title,
           text: this.handbook,
@@ -282,7 +282,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/tag/list",
+        url: self.serverIP + "api/tag/list",
         data: {},
       })
         .then(function (response) {

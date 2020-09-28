@@ -28,7 +28,7 @@
 <script>
 export default {
   name: "Login",
-  inject: ["reload"],
+  inject: ["reload", "serverIP"],
   data() {
     return {
       this: null,
@@ -45,7 +45,7 @@ export default {
       } else {
         this.axios({
           method: "post",
-          url: "http://localhost:8080/api/auth/login",
+          url: self.serverIP + "api/auth/login",
           data: {
             username: this.username,
             password: this.password,

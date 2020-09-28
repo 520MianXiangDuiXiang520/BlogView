@@ -59,7 +59,7 @@
 <script>
 export default {
   name: "ArticleList",
-  inject: ["getExactTime"],
+  inject: ["getExactTime", "serverIP"],
   data: () => {
     return {
       routeURL: "#/detail/",
@@ -90,7 +90,7 @@ export default {
 
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/article/delete",
+        url: self.serverIP + "api/article/delete",
         data: {
           id: id,
         },

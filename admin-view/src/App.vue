@@ -60,6 +60,7 @@ export default {
     return {
       reload: this.reload,
       getExactTime: this.getExactTime,
+      serverIP: this.serverIP,
     };
   },
   data: () => {
@@ -119,6 +120,7 @@ export default {
         id: 0,
         permiter: 0,
       },
+      serverIP: "http://39.106.168.39:8888/"
     };
   },
   mounted() {
