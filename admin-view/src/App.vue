@@ -169,7 +169,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/auth/info",
+        url: self.serverIP + "api/auth/info",
         data: {},
       })
         .then(function (response) {
