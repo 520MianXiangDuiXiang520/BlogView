@@ -213,7 +213,7 @@ export default {
             self.$router.push("/login");
             self.reload();
           }
-          if (response.data["header"]["code"] == 401) {
+          if (response.data["header"]["code"] == 200) {
             self.openMessage("新建成功", "success");
             self.reload();
           }

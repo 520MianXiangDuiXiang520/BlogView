@@ -1,5 +1,7 @@
 # JuneBlog
 
+[![Build Status](https://travis-ci.com/520MianXiangDuiXiang520/BlogView.svg?branch=master)](https://travis-ci.com/520MianXiangDuiXiang520/BlogView)
+
 ### Run with Docker
 
 ```sh
