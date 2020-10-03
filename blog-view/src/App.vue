@@ -33,6 +33,7 @@ export default {
         },
       ],
       isRouterAlive: true,
+      // serverIP: "http://127.0.0.1:8080/",
       serverIP: "http://39.106.168.39:8888/"
     };
   },
@@ -41,11 +42,12 @@ export default {
       openMessage: this.openMessage,
       getExactTime: this.getExactTime,
       reload: this.reload,
-      serverIP: this.serverIP
+      serverIP: this.serverIP,
+      sleep: this.sleep
     };
   },
   methods: {
-        reload() {
+    reload() {
       this.isRouterAlive = false;
       this.login = false;
       this.$nextTick(function () {
@@ -54,7 +56,7 @@ export default {
     },
     openMessage(msg, type) {
       this.$notify({
-        title: "警告",
+        title: "提示",
         message: msg,
         type: type,
       });
@@ -72,6 +74,9 @@ export default {
       var min = date.getMinutes() + ":";
       var second = date.getSeconds();
       return year + month + dates + hour + min + second;
+    },
+    sleep(time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
     },
   },
 };

@@ -6,6 +6,7 @@ import Detail from '../components/detail/Detail.vue'
 import List from '../components/list/List.vue'
 import Friend from "../components/firend/Friend.vue"
 import Tags from "../components/tags/Tags.vue"
+import Talking from "../components/talk/Talking.vue"
 
 Vue.use(Router) //使用vue-router
 
@@ -36,8 +37,13 @@ export default new Router({
         },
         {
             path: "/tag",
-            name: "tag/",
+            name: "tag",
             component: Tags
+        },
+        {
+            path: "/talk",
+            name: "talk",
+            component: Talking
         },
     ]
 })

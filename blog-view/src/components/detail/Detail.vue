@@ -12,17 +12,26 @@
         :previewBackground="prop.previewBackground"
         class="md"
       ></mavon-editor>
+      <div class="talk">
+<Talking ></Talking>
+      </div>
+          
     </div>
+
   </div>
 </template>
 
 <script>
+import Talking from "../talk/Talking.vue"
 export default {
   name: "Detail",
   data: () => {
     return {
       articleDetail: {},
     };
+  },
+  components:{
+    Talking
   },
   computed: {
     prop() {
@@ -59,5 +68,8 @@ export default {
     margin-left: 18%;
     margin-right: 18%;
     z-index: 10;
+}
+.talk {
+  margin-top: 50px;
 }
 </style>
