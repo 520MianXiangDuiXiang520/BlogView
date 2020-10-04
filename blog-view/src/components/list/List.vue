@@ -4,7 +4,7 @@
     <div v-else class="spinner-border text-primary" role="status">
       <span class="sr-only">Loading...</span>
     </div>
-    <split :total="articleTotal" :pageSize="pageSize" />
+    <split :total="articleTotal" :pageSize="pageSize" :tagID="tagID" />
   </div>
 </template>
 
