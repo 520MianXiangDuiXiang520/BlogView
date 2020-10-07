@@ -121,6 +121,7 @@ export default {
         permiter: 0,
       },
       serverIP: "http://39.106.168.39:8888/"
+      // serverIP: "http://localhost:8080/"
     };
   },
   mounted() {
@@ -129,7 +130,7 @@ export default {
     this.getUserInfo();
   },
   methods: {
-        getExactTime(time) {
+       getExactTime(time) {
       // var date = new Date(time);
       var date = new Date(time * 1000);
       var year = date.getFullYear() + "-";
@@ -137,10 +138,22 @@ export default {
         (date.getMonth() + 1 < 10
           ? "0" + (date.getMonth() + 1)
           : date.getMonth() + 1) + "-";
-      var dates = date.getDate() + " ";
-      var hour = date.getHours() + ":";
-      var min = date.getMinutes() + ":";
-      var second = date.getSeconds();
+
+      var dates = (date.getDate() < 10
+          ? "0" + (date.getDate())
+          : date.getDate()) + " ";
+
+      var hour = (date.getHours() < 10
+          ? "0" + (date.getHours())
+          : date.getHours()) + ":";
+
+      var min = (date.getMinutes() < 10
+          ? "0" + (date.getMinutes())
+          : date.getMinutes()) + ":";
+
+      var second = (date.getSeconds() < 10
+          ? "0" + (date.getSeconds())
+          : date.getSeconds());
       return year + month + dates + hour + min + second;
     },
     openRight(title, msg, type) {
@@ -198,7 +211,7 @@ export default {
       let self = this;
       this.axios({
         method: "post",
-        url: "http://localhost:8080/api/auth/logout",
+        url:  self.serverIP + "api/auth/logout",
         data: {},
       }).then(function () {
         self.$cookie.delete("SESSIONID");
