@@ -90,7 +90,9 @@
           </el-col>
 
           <el-col :span="4">
-            <el-button type="success" size="medium" @click="addTag">确定</el-button>
+            <el-button type="success" size="medium" @click="addTag"
+              >确定</el-button
+            >
           </el-col>
         </el-row>
       </div>
@@ -143,12 +145,12 @@ export default {
   },
   methods: {
     addTag() {
-      let self = this
+      let self = this;
       this.axios({
         method: "post",
         url: self.serverIP + "api/tag/add",
         data: {
-          name: self.newTag
+          name: self.newTag,
         },
       })
         .then(function (response) {
@@ -161,9 +163,12 @@ export default {
           }
           if (response.data["header"]["code"] == 200) {
             self.openMessage("新建成功", "success");
-            self.reload();
+            // self.reload();
           } else {
-            self.openMessage("发生错误啦！code = " + response.data["header"]["code"], "success");
+            self.openMessage(
+              "发生错误啦！code = " + response.data["header"]["code"],
+              "success"
+            );
             self.reload();
           }
         })
@@ -215,6 +220,12 @@ export default {
           }
           if (response.data["header"]["code"] == 200) {
             self.openMessage("新建成功", "success");
+            self.reload();
+          } else {
+            self.openMessage(
+              "新建文章失败！code = " + response.data["header"]["code"],
+              "warning"
+            );
             self.reload();
           }
         })
