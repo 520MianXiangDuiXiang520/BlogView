@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+    <el-dialog title="您的信息" :visible.sync="dialogFormVisible">
       <el-form ref="form" label-width="80px">
         <el-form-item label="邮箱*">
           <el-input v-model="newTalk.email"></el-input>
@@ -18,7 +18,7 @@
         <el-button type="primary" @click="addTalk">确 定</el-button>
       </div>
     </el-dialog>
-    <el-dialog title="收货地址" :visible.sync="dialogFormVisible2">
+    <el-dialog title="您的信息" :visible.sync="dialogFormVisible2">
       <el-form ref="form" label-width="80px">
         <el-form-item label="邮箱*">
           <el-input v-model="newTalk.email"></el-input>
