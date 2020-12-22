@@ -183,6 +183,7 @@ export default {
 }
 .talk {
   margin-top: 50px;
+  margin-right: 20%;
 }
 .navigation {
   position: fixed;
