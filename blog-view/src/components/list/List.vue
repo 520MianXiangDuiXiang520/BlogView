@@ -40,6 +40,14 @@ export default {
   },
   inject: ["serverIP"],
   methods: {
+    removeArticleCache() {
+      let all = storage.getAll();
+      for (let key in all) {
+        if(key.slice(0, 12) == 'articleList:') {
+          storage.remove(key)
+        }
+      }
+    },
     updateList() {
       let self = this;
       self.articleInfo = [];
@@ -83,7 +91,7 @@ export default {
             if (storage.has("cacheQueue")) {
               cacheQueue = storage.get("cacheQueue");
             } else {
-              storage.clear();
+              self.removeArticleCache()
             }
 
             if (cacheQueue.length >= MaxCacheQueueLen) {
@@ -106,11 +114,11 @@ export default {
     },
 
     // 定时清理 localcache
-    clearCacheTimer: () => {
+    clearCacheTimer() {
       // 2 分钟没动作就清空缓存
       let timeout = 1000 * 60 * 2;
       if (new Date().getTime() - storage.get("timer") - timeout >= 0) {
-        storage.clear();
+        this.removeArticleCache();
       }
     },
   },

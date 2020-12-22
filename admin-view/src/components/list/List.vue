@@ -35,6 +35,14 @@ export default {
     this.timer = setInterval(this.clearCacheTimer, 1000);
   },
   methods: {
+    removeArticleCache() {
+      let all = storage.getAll();
+      for (let key in all) {
+        if(key.slice(0, 12) == 'articleList:') {
+          storage.remove(key)
+        }
+      }
+    },
     updateList: (self) => {
       let intPage = parseInt(self.$route.params.page);
       let cacheKey = "articleList:" + intPage;
@@ -62,7 +70,7 @@ export default {
             if (storage.has("cacheQueue")) {
               cacheQueue = storage.get("cacheQueue");
             } else {
-              storage.clear();
+              self.removeArticleCache()
             }
 
             if (cacheQueue.length >= MaxCacheQueueLen) {
@@ -84,12 +92,12 @@ export default {
     },
 
     // 定时清理 localcache
-    clearCacheTimer: () => {
+    clearCacheTimer(){
       // 30s 没动作就清空缓存
-      let timeout = 1000 * 30
-      if(new Date().getTime() - storage.get("timer") - timeout >= 0){
-            storage.clear();
-        }
+      let timeout = 1000 * 30;
+      if (new Date().getTime() - storage.get("timer") - timeout >= 0) {
+        this.removeArticleCache()
+      }
     },
   },
 };

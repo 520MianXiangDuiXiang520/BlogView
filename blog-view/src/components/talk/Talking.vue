@@ -111,6 +111,8 @@
 </template>
 
 <script>
+import storage from "good-storage";
+
 export default {
   name: "Talking",
   data() {
@@ -160,13 +162,11 @@ export default {
         if (response.data["header"] != null) {
           if (response.data["header"]["code"] == 200) {
             self.openMessage("评论成功", "success");
+            self.storeUserInfo(self.newTalk.username, self.newTalk.email)
           }
         } else {
         self.openMessage("评论失败[" + response.data["code"] + "]", "warning");
         }
-
-
-
         self.dialogFormVisible = false;
         self.reload();
       });
@@ -204,9 +204,22 @@ export default {
         self.hasNext = response.data["hasNext"];
       });
     },
+    getUserInfo() {
+      if(storage.has("username")) {
+        this.newTalk.username = storage.get("username")
+      }
+      if(storage.has("email")) {
+        this.newTalk.email = storage.get("email")
+      }
+    },
+    storeUserInfo(username, email) {
+      storage.set("username", username)
+      storage.set("email", email)
+    }
   },
   mounted() {
     this.getTalks();
+    this.getUserInfo();
   },
 };
 </script>
