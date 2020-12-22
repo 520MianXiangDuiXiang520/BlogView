@@ -17,7 +17,7 @@
           ></mavon-editor>
         </el-col>
         <el-col :span="4">
-          <div id="navigation" style="position: fixed;cursor: pointer;height: 600px; overflow: auto"></div>
+          <div id="navigation" style="position: fixed;cursor: pointer;height: 70%; overflow: auto"></div>
         </el-col>
       </el-row>
 
