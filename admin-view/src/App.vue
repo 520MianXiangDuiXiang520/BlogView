@@ -120,7 +120,7 @@ export default {
         id: 0,
         permiter: 0,
       },
-      serverIP: "http://39.106.168.39:8888/"
+      serverIP: "https://junebao.top:8888/"
       // serverIP: "http://localhost:8080/"
     };
   },
