@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <Navbar :pros="pros"></Navbar>
-    <router-view v-if="isRouterAlive"></router-view>
+    <el-container>
+      <el-header class="paddingZero" style="padding:0"><Navbar :pros="pros"></Navbar></el-header>
+      <el-main class="paddingZero" style="padding:0;height:auto; min-height:600px;"><router-view v-if="isRouterAlive"></router-view></el-main>
+      <el-footer class="paddingZero" style="padding:0; buttom:0px"><Buttom></Buttom></el-footer>
+    </el-container>
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
+import Buttom from "./components/Bottom.vue";
 
 export default {
   name: "app",
   components: {
     Navbar,
+    Buttom,
   },
   data() {
     return {
@@ -34,7 +39,7 @@ export default {
       ],
       isRouterAlive: true,
       // serverIP: "http://127.0.0.1:8080/",
-      serverIP: "https://junebao.top:8888/"
+      serverIP: "https://junebao.top:8888/",
     };
   },
   provide() {
@@ -43,14 +48,14 @@ export default {
       getExactTime: this.getExactTime,
       reload: this.reload,
       serverIP: this.serverIP,
-      sleep: this.sleep
+      sleep: this.sleep,
     };
   },
   methods: {
     reload() {
       this.isRouterAlive = false;
       this.login = false;
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.isRouterAlive = true;
       });
     },
@@ -70,21 +75,18 @@ export default {
           ? "0" + (date.getMonth() + 1)
           : date.getMonth() + 1) + "-";
 
-      var dates = (date.getDate() < 10
-          ? "0" + (date.getDate())
-          : date.getDate()) + " ";
+      var dates =
+        (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " ";
 
-      var hour = (date.getHours() < 10
-          ? "0" + (date.getHours())
-          : date.getHours()) + ":";
+      var hour =
+        (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":";
 
-      var min = (date.getMinutes() < 10
-          ? "0" + (date.getMinutes())
-          : date.getMinutes()) + ":";
+      var min =
+        (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) +
+        ":";
 
-      var second = (date.getSeconds() < 10
-          ? "0" + (date.getSeconds())
-          : date.getSeconds());
+      var second =
+        date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
       return year + month + dates + hour + min + second;
     },
     sleep(time) {
@@ -94,5 +96,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.paddingZero{
+  padding: 0;
+}
 </style>

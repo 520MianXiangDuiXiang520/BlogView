@@ -10,7 +10,7 @@
     </div>
   </nav>-->
   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Juneblog</a>
+    <a class="navbar-brand" href="https://junebao.top">Juneblog</a>
     <button
       class="navbar-toggler"
       type="button"
