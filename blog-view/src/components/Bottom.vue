@@ -54,7 +54,7 @@
 
         <el-col :span="12"
           ><div class="column" style="font-size:14px; margin-top:50px">
-            <el-link href="http://www.beian.miit.gov.cn/" type="info"
+            <el-link href="https://beian.miit.gov.cn" type="info"
               >陇ICP备20000438号</el-link
             >
             
