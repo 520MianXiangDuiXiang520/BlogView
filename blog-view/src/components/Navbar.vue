@@ -9,7 +9,7 @@
       >{{pro.name}}</router-link>
     </div>
   </nav>-->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" id="top-head">
     <a class="navbar-brand" href="https://junebao.top">Juneblog</a>
     <button
       class="navbar-toggler"
@@ -25,7 +25,9 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active" v-for="pro in pros" :key="pro.id">
-          <a class="nav-link" v-bind:to="pro.href" :href="'#' + pro.href">{{pro.name}}</a>
+          <a class="nav-link" v-bind:to="pro.href" :href="'#' + pro.href">{{
+            pro.name
+          }}</a>
         </li>
       </ul>
       <!-- <span class="navbar-text">Navbar text with an inline element</span> -->

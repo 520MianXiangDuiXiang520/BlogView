@@ -31,7 +31,7 @@ module.exports = {
     },
     externals: {
       vue: "Vue",
-      "element-ui": "ELEMENT",
+      // "element-ui": "ELEMENT",
       "bootstrap-vue": "bootstrapVue",
       "mavon-editor": "MavonEditor",
     },
